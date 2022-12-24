@@ -12,7 +12,7 @@ const INITIAL_USER = {
 
 function AppProvider({ children }) {
   const [loading, setLoading] = useState(true)
-  const [todos, setTodos] = useState(new Array())
+  const [todos, setTodos] = useState([])
 
   const [editTodo, setEditTodo] = useState({})
   const [isEdit, setIsEdit] = useState(false)
@@ -31,6 +31,7 @@ function AppProvider({ children }) {
   )
 
   const [colorMode, setColorMode] = useState("dark")
+  // Keep input field from highlighting
   const lightInputStyle = { WebkitBoxShadow: "0 0 0 1000px #fff inset" }
   const darkInputStyle = { WebkitBoxShadow: "0 0 0 1000px #121212 inset" }
 

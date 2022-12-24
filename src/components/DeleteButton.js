@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 
-import {
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  IconButton,
-} from "@mui/material"
+import { IconButton } from "@mui/material"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { useAppContext } from "./../Context"
 

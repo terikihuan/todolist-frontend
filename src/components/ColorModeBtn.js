@@ -1,12 +1,6 @@
 import React from "react"
 import { styled } from "@mui/material/styles"
-import {
-  FormGroup,
-  FormControlLabel,
-  Switch,
-  Stack,
-  Typography,
-} from "@mui/material"
+import { Switch } from "@mui/material"
 import { useAppContext } from "./../Context"
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({

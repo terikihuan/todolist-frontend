@@ -16,8 +16,7 @@ import TodoModal from "./TodoModal"
 import CreateTodoModal from "./CreateTodoModal"
 
 function TodoList() {
-  const { todos, isCreateModalOpen, setIsCreateModalOpen, user } =
-    useAppContext()
+  const { todos, isCreateModalOpen, setIsCreateModalOpen } = useAppContext()
 
   return (
     <Box
@@ -31,17 +30,19 @@ function TodoList() {
       }}
     >
       <h2>
-        You have {todos.filter((todo) => todo.completed == false).length} tasks
+        You have {todos.filter((todo) => todo.completed === false).length} tasks
         left
       </h2>
       <List
         sx={{
           mt: 3,
+          mb: 10,
           border: 2,
           borderColor: "primary.main",
           borderRadius: "16px",
           py: "3ch",
           px: "4ch",
+          backdropFilter: "blur(5px)",
         }}
       >
         {/* This part lists out all available todo item */}

@@ -1,15 +1,5 @@
-import React, { useEffect } from "react"
-import {
-  Button,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Box,
-  Typography,
-  Divider,
-  IconButton,
-} from "@mui/material"
-import DeleteIcon from "@mui/icons-material/Delete"
+import React from "react"
+import { DialogContent, Box, Typography, Divider } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2"
 import TodoCheckbox from "./TodoCheckbox"
 
@@ -18,7 +8,7 @@ import DeleteButton from "./DeleteButton"
 
 // COMPONENT
 function TodoDetails({ todo }) {
-  const { isEdit, setIsEdit, isModalOpen, isCreateModalOpen } = useAppContext()
+  const { setIsEdit } = useAppContext()
 
   // Functions
   const enableEdit = () => {
@@ -65,17 +55,10 @@ function TodoDetails({ todo }) {
                 alignItems="center"
               >
                 <DeleteButton id={todo?.id} />
-                {/* <IconButton aria-label="delete">
-                  <DeleteIcon />
-                </IconButton> */}
               </Grid>
             </Grid>
           </Box>
-          <Divider
-            sx={{
-              my: 3,
-            }}
-          />
+          <Divider sx={{ my: 3 }} />
           <Box>
             <Typography
               // color="text.secondary"

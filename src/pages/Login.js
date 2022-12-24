@@ -42,7 +42,8 @@ export default function Login() {
       [e.target.name]: e.target.value,
     }))
   }
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     const data = await authenticateUser(loginUser)
     console.log(data)
     localStorage.setItem("token", data.token)
@@ -60,7 +61,11 @@ export default function Login() {
       type: "success",
       message: "Signed in successfully",
     }))
-    // console.log("submit")
+  }
+  const giveInputStyle = () => {
+    return colorMode === "light"
+      ? { style: lightInputStyle }
+      : { style: darkInputStyle }
   }
 
   // Effects
@@ -78,7 +83,8 @@ export default function Login() {
       <Box
         id="login-title"
         sx={{
-          marginTop: 14,
+          // marginTop: 14,
+          paddingTop: 14,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -91,7 +97,7 @@ export default function Login() {
       <Box
         id="login-form"
         component="form"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         noValidate
         sx={{ mt: 1 }}
       >
@@ -105,11 +111,7 @@ export default function Login() {
           value={loginUser.username}
           autoFocus
           onChange={handleTextChange}
-          inputProps={
-            colorMode == "light"
-              ? { style: lightInputStyle }
-              : { style: darkInputStyle }
-          }
+          inputProps={giveInputStyle}
         />
         <TextField
           margin="normal"
@@ -122,22 +124,18 @@ export default function Login() {
           autoComplete="current-password"
           value={loginUser.password}
           onChange={handleTextChange}
-          inputProps={
-            colorMode == "light"
-              ? { style: lightInputStyle }
-              : { style: darkInputStyle }
-          }
+          inputProps={giveInputStyle}
         />
         <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
           label="Remember me"
         />
         <Button
-          // type="submit"
+          type="submit"
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
-          onClick={handleSubmit}
+          // onClick={handleSubmit}
         >
           Sign In
         </Button>

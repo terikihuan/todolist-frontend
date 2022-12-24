@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useTheme } from "@mui/material/styles"
 
@@ -37,7 +37,8 @@ export default function Register() {
       [e.target.name]: e.target.value,
     }))
   }
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     const data = await createUser(registerUser)
     if (data?.id) {
       setSnackbar((prev) => ({
@@ -57,6 +58,11 @@ export default function Register() {
       redirect("/register")
     }
   }
+  const giveInputStyle = () => {
+    return colorMode === "light"
+      ? { style: lightInputStyle }
+      : { style: darkInputStyle }
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -64,7 +70,7 @@ export default function Register() {
       <Box
         id="register-title"
         sx={{
-          marginTop: 14,
+          paddingTop: 14,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -77,7 +83,7 @@ export default function Register() {
       <Box
         id="register-form"
         component="form"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         noValidate
         sx={{ mt: 1 }}
       >
@@ -92,11 +98,7 @@ export default function Register() {
           autoFocus
           value={registerUser.username}
           onChange={handleTextChange}
-          inputProps={
-            colorMode == "light"
-              ? { style: lightInputStyle }
-              : { style: darkInputStyle }
-          }
+          inputProps={giveInputStyle}
         />
         <TextField
           margin="normal"
@@ -109,22 +111,18 @@ export default function Register() {
           autoComplete="current-password"
           value={registerUser.password}
           onChange={handleTextChange}
-          inputProps={
-            colorMode == "light"
-              ? { style: lightInputStyle }
-              : { style: darkInputStyle }
-          }
+          inputProps={giveInputStyle}
         />
         <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
           label="Remember me"
         />
         <Button
-          // type="submit"
+          type="submit"
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
-          onClick={handleSubmit}
+          // onClick={handleSubmit}
         >
           Register
         </Button>

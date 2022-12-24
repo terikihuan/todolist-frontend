@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 
 // Material UI
-import { Box, Dialog, DialogTitle, keyframes } from "@mui/material"
+import { Box, Dialog, DialogTitle } from "@mui/material"
 
 import { useAppContext } from "./../Context"
 import EditTodoForm from "./EditTodoForm"

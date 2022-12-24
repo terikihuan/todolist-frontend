@@ -72,7 +72,7 @@ function Topbar() {
           >
             <Avatar
               sx={
-                colorMode == "light"
+                colorMode === "light"
                   ? {
                       bgcolor: "primary.contrastText",
                       color: "primary.main",
