@@ -1,4 +1,4 @@
-const URL = "https://web-production-305a.up.railway.app/"
+const URL = "https://web-production-305a.up.railway.app"
 // const URL = "http://127.0.0.1:8000"
 
 export default class APIService {
